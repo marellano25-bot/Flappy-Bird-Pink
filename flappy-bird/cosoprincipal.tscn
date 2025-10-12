@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://c1wb4g4fnsdbu"]
+
+[ext_resource type="Script" uid="uid://b64bv7rsc02f1" path="res://Scrips/cosoprincipal.gd" id="1_mmc72"]
+[ext_resource type="Texture2D" uid="uid://cl40yorqjha7y" path="res://art/Background_nightime.png" id="1_tro0c"]
+[ext_resource type="Texture2D" uid="uid://fcvjykuratgx" path="res://art/base.png" id="2_htydy"]
+[ext_resource type="PackedScene" uid="uid://c43mnw5lhr5t8" path="res://Scenes/pipes.tscn" id="2_ti7m3"]
+[ext_resource type="PackedScene" uid="uid://cyi86uesd468y" path="res://bird.tscn" id="3_5tu5x"]
+
+[node name="Cosoprincipal" type="Node"]
+script = ExtResource("1_mmc72")
+pipes_scene = ExtResource("2_ti7m3")
+
+[node name="ParallaxBackground" type="Parallax2D" parent="."]
+repeat_size = Vector2(288, 0)
+autoscroll = Vector2(-30, 0)
+
+[node name="BackgroundNightime" type="Sprite2D" parent="ParallaxBackground"]
+position = Vector2(144, 256)
+texture = ExtResource("1_tro0c")
+
+[node name="ParallaxFloor" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0, 0)
+repeat_size = Vector2(336, 0)
+autoscroll = Vector2(-60, 0)
+
+[node name="Base" type="Sprite2D" parent="ParallaxFloor"]
+position = Vector2(168, 456)
+texture = ExtResource("2_htydy")
+
+[node name="Bird" parent="." instance=ExtResource("3_5tu5x")]
+position = Vector2(56, 184)
+
+[node name="Timerpipe" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timerpipe" to="." method="_on_timerpipe_timeout"]

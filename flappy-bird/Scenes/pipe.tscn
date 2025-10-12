@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bk0eih5cshc30"]
+
+[ext_resource type="Texture2D" uid="uid://cvo7ir28b4bcd" path="res://art/pipe-pink.png" id="1_n21g0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hnit7"]
+size = Vector2(48, 320)
+
+[node name="Pipe" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_n21g0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_hnit7")
