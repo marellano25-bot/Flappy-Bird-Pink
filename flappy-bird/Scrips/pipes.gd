@@ -18,3 +18,9 @@ func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 func _on_pipe_down_body_entered(body: Node2D) -> void:
 	if body is Bird:
 		print("Choco el pajarito")
+		
+	
+
+
+func _on_pipe_top_body_entered(body: Node2D) -> void:
+	pass # Replace with function body.

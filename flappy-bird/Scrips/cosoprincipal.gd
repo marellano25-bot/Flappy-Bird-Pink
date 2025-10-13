@@ -11,3 +11,4 @@ func create_pipe():
 	
 func _on_timerpipe_timeout() -> void:
 	create_pipe()
+	 

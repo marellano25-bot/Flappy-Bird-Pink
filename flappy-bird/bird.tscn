@@ -1,9 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://cyi86uesd468y"]
+[gd_scene load_steps=10 format=3 uid="uid://cyi86uesd468y"]
 
 [ext_resource type="Script" uid="uid://b22q05wp2itv0" path="res://Scrips/bird.gd" id="1_cchwj"]
 [ext_resource type="Texture2D" uid="uid://ckiryjs54mvch" path="res://art/up-bird.png" id="1_j88tq"]
 [ext_resource type="Texture2D" uid="uid://btfcdb5g2ila5" path="res://art/mid-bird.png" id="2_cchwj"]
 [ext_resource type="Texture2D" uid="uid://b0fxwrmv0pfqo" path="res://art/down-bird.png" id="3_6ljjq"]
+[ext_resource type="Texture2D" uid="uid://csyk4xseydsdo" path="res://art/up-rodrigo.png" id="5_yr30m"]
+[ext_resource type="Texture2D" uid="uid://xxgbcrx3k4x3" path="res://art/mid-rodrigo.png" id="6_2o5yp"]
+[ext_resource type="Texture2D" uid="uid://ce28mxalmx2n0" path="res://art/down-rodrigo.png" id="7_k3v35"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_axl6x"]
 animations = [{
@@ -20,6 +23,20 @@ animations = [{
 "loop": true,
 "name": &"Fly",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_yr30m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_2o5yp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_k3v35")
+}],
+"loop": true,
+"name": &"Rodrigo",
+"speed": 5.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6ljjq"]
@@ -27,6 +44,7 @@ radius = 20.0
 
 [node name="Bird" type="CharacterBody2D"]
 position = Vector2(144, 88)
+collision_mask = 2
 script = ExtResource("1_cchwj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -34,8 +52,6 @@ position = Vector2(8, 8)
 sprite_frames = SubResource("SpriteFrames_axl6x")
 animation = &"Fly"
 autoplay = "Fly"
-frame = 2
-frame_progress = 0.78099024
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(8, 8)

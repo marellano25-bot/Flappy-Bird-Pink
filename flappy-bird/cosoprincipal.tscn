@@ -1,10 +1,35 @@
-[gd_scene load_steps=6 format=3 uid="uid://c1wb4g4fnsdbu"]
+[gd_scene load_steps=13 format=3 uid="uid://c1wb4g4fnsdbu"]
 
 [ext_resource type="Script" uid="uid://b64bv7rsc02f1" path="res://Scrips/cosoprincipal.gd" id="1_mmc72"]
 [ext_resource type="Texture2D" uid="uid://cl40yorqjha7y" path="res://art/Background_nightime.png" id="1_tro0c"]
 [ext_resource type="Texture2D" uid="uid://fcvjykuratgx" path="res://art/base.png" id="2_htydy"]
 [ext_resource type="PackedScene" uid="uid://c43mnw5lhr5t8" path="res://Scenes/pipes.tscn" id="2_ti7m3"]
 [ext_resource type="PackedScene" uid="uid://cyi86uesd468y" path="res://bird.tscn" id="3_5tu5x"]
+[ext_resource type="Script" uid="uid://byqjoalbx6n8o" path="res://powerup.gd" id="6_8sv6g"]
+[ext_resource type="Texture2D" uid="uid://xrxvhj4hpai8" path="res://art/fresa.png" id="7_c1g30"]
+[ext_resource type="Texture2D" uid="uid://cf6vv7skv6qgc" path="res://art/fresa2.png" id="8_fik3d"]
+[ext_resource type="Texture2D" uid="uid://bpedavapfyeib" path="res://art/fresa3.png" id="9_0qbs0"]
+[ext_resource type="Script" uid="uid://bfnqemg8j5v16" path="res://animated_sprite_2d.gd" id="10_c1g30"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ushx0"]
+size = Vector2(36.25, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bus04"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_c1g30")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_fik3d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_0qbs0")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 12.0
+}]
 
 [node name="Cosoprincipal" type="Node"]
 script = ExtResource("1_mmc72")
@@ -19,6 +44,7 @@ position = Vector2(144, 256)
 texture = ExtResource("1_tro0c")
 
 [node name="ParallaxFloor" type="Parallax2D" parent="."]
+z_index = 10
 scroll_scale = Vector2(0, 0)
 repeat_size = Vector2(336, 0)
 autoscroll = Vector2(-60, 0)
@@ -31,5 +57,21 @@ texture = ExtResource("2_htydy")
 position = Vector2(56, 184)
 
 [node name="Timerpipe" type="Timer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="powerup" type="Node" parent="."]
+script = ExtResource("6_8sv6g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="powerup"]
+position = Vector2(247.12494, 199.5)
+shape = SubResource("RectangleShape2D_ushx0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="powerup"]
+position = Vector2(245.99997, 200.5)
+scale = Vector2(0.8888876, 0.9166667)
+sprite_frames = SubResource("SpriteFrames_bus04")
+animation = &"idle"
+script = ExtResource("10_c1g30")
 
 [connection signal="timeout" from="Timerpipe" to="." method="_on_timerpipe_timeout"]

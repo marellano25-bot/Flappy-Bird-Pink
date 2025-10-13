@@ -4,6 +4,10 @@ extends CharacterBody2D
 @export var gravity := 1000.0
 @export var jump_force := 300.0
 
+
+@onready var anim = $AnimatedSprite2D
+#lucas
+
 func _ready() -> void:
 	print("Script funcionando correctamente ✅")
 
@@ -17,3 +21,11 @@ func _physics_process(delta: float) -> void:
 
 	# Mover el pájaro
 	move_and_slide()
+	
+func use_power_up():
+	var powerUpDuration= 5
+	anim.play("Rodrigo")
+	await get_tree().create_timer(powerUpDuration).timeout
+	# Revert to normal animation
+	anim.play("idle")
+		
