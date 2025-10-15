@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://c5a4871j7bgba"]
+
+[ext_resource type="Script" uid="uid://da5erk1w5o5l5" path="res://Scrips/yep.gd" id="1_v2lfg"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_v2lfg")
+
+[node name="LabelScore" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 0.44791666
+anchor_right = 0.559
+anchor_bottom = 0.078
+offset_left = 1.0
+offset_top = -9.0
+offset_right = 2.0079956
+offset_bottom = 92.063995
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 50
+text = "0
+"
+metadata/_edit_use_anchors_ = true

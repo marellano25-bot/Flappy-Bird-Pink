@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3bc73h6olrnb"]
+
+[ext_resource type="Script" uid="uid://c0uxm1kor4fuc" path="res://Scrips/canvas_layer.gd" id="1_5oaki"]
+[ext_resource type="Texture2D" uid="uid://ctwkcfmx58qia" path="res://art/startbtn.png" id="3_u5uhc"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_5oaki")
+
+[node name="LabelScore" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -8.0
+offset_top = 8.0
+offset_right = 32.0
+offset_bottom = 77.0
+grow_horizontal = 2
+size_flags_horizontal = 8
+theme_override_font_sizes/font_size = 50
+text = "0"
+
+[node name="Startbtn" type="Sprite2D" parent="."]
+position = Vector2(416, 56.000015)
+scale = Vector2(0.11685159, 0.11389417)
+texture = ExtResource("3_u5uhc")

@@ -1,0 +1,10 @@
+res://cosoprincipal.tscn
+res://Scrips/bird.gd
+res://bird.gd
+res://bird.tscn
+res://Scenes/pipes.tscn
+res://canvas_layer.tscn
+res://Scrips/pipes.gd
+res://Scrips/yep.gd
+res://Scenes/pipe.tscn
+res://Scrips/global.gd
