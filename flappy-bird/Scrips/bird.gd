@@ -4,12 +4,13 @@ extends CharacterBody2D
 @export var gravity := 1000.0
 @export var jump_force := 300.0
 
-
 @onready var anim = $AnimatedSprite2D
-#lucas
+
+# Estado del pájaro
+var inmune: bool = false
 
 func _ready() -> void:
-	print("Script funcionando correctamente ✅")
+	print("✅ Script de Bird cargado correctamente")
 
 func _physics_process(delta: float) -> void:
 	# Aplicar gravedad
@@ -21,11 +22,26 @@ func _physics_process(delta: float) -> void:
 
 	# Mover el pájaro
 	move_and_slide()
-	
+
+
+# 🟢 Función de power-up visual (Rodrigo)
 func use_power_up():
-	var powerUpDuration= 5
+	var powerUpDuration = 5
+	print("▶ Activando animación Rodrigo")
 	anim.play("Rodrigo")
 	await get_tree().create_timer(powerUpDuration).timeout
-	# Revert to normal animation
-	anim.play("idle")
-		
+	print("⏹ Volviendo a animación normal")
+	anim.play("Fly")
+
+
+# 🛡️ Función de inmunidad
+func activar_inmunidad(tiempo):
+	inmune = true
+	print("🛡️ Bird es inmune por ", tiempo, " segundos")
+	anim.play("Rodrigo")
+
+	await get_tree().create_timer(tiempo).timeout
+
+	inmune = false
+	print("❌ Inmunidad terminada")
+	anim.play("Fly")
