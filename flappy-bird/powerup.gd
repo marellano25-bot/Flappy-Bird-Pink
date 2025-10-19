@@ -3,58 +3,48 @@ extends Area2D
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var collision: CollisionShape2D = $CollisionShape2D
 
-@export var tiempo_inmunidad := 5.0
-@export var tiempo_reaparicion := 10.0
+@export var tiempo_inmunidad: float = 5.0
+@export var tiempo_reaparicion: float = 10.0
 
-func _ready():
+var en_reaparicion: bool = false
+
+func _ready() -> void:
 	randomize()
 	posicionar_aleatoriamente()
 	body_entered.connect(_on_body_entered)
 
-#Colocamos la fresa en una posición aleatoria al inicio
-func posicionar_aleatoriamente():
-	var _viewport_size = get_viewport_rect().size
-	var _margen = 40
-
-	# 🟢 Fresa aparece entre 80 y 180px en eje X (zona jugable para Bird)
-	var x = randf_range(75, 100)
-
-	# 🟢 Ajuste del eje Y para que esté en el rango medio de vuelo de Bird
-	var y = randf_range(200, 350)
-
+# Coloca la fresa (power-up) en una posición aleatoria
+func posicionar_aleatoriamente() -> void:
+	var viewport_size = get_viewport_rect().size
+	var margen = 40
+	var x = randf_range(margen, viewport_size.x - margen)
+	var y = randf_range(110, 300)
 	position = Vector2(x, y)
 
-#Cuando Bird choca con la fresa
+# Cuando Bird choca con la fresa
 func _on_body_entered(body: Node2D) -> void:
+	if en_reaparicion:
+		return  # Ignora si ya está desaparecida o en proceso
+
 	if body.name == "Bird":
-		print("¡Fresa consumida!")
+		print("¡Power-up consumido!")
+
+		en_reaparicion = true
 		sprite.hide()
 		collision.disabled = true
 
-		# Aquí puedes activar la inmunidad de Bird
+		# Activa inmunidad si Bird tiene el método
 		if body.has_method("activar_inmunidad"):
 			body.activar_inmunidad(tiempo_inmunidad)
 
+		# Cambia apariencia (Rodrigo)
+		if body.has_method("use_power_up"):
+			body.use_power_up()
+
+		# Esperar reaparición
 		await get_tree().create_timer(tiempo_reaparicion).timeout
+
 		posicionar_aleatoriamente()
 		sprite.show()
 		collision.disabled = false
-
-	if body.name == "Bird":
-		var rodrigo = body.get_node_or_null("Rodrigo")
-		var normal_sprite = body.get_node_or_null("AnimatedSprite2D")
-
-		if rodrigo and normal_sprite:
-			print("Power-up activado!")
-
-			#Desaparecer fresa
-			hide()
-			collision.disabled = true
-
-			#Cambiar apariencia de Bird
-			rodrigo.visible = true
-			normal_sprite.visible = false
-			await get_tree().create_timer(tiempo_reaparicion).timeout
-			posicionar_aleatoriamente()
-			collision.disabled = false
-			show()
+		en_reaparicion = false

@@ -10,7 +10,7 @@ extends CharacterBody2D
 var inmune: bool = false
 
 func _ready() -> void:
-	print("✅ Script de Bird cargado correctamente")
+	print("Script de Bird cargado correctamente")
 
 func _physics_process(delta: float) -> void:
 	# Aplicar gravedad
@@ -24,24 +24,25 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
-# 🟢 Función de power-up visual (Rodrigo)
+#Función de power-up visual (Rodrigo)
 func use_power_up():
 	var powerUpDuration = 5
-	print("▶ Activando animación Rodrigo")
+	print("Activando animación Rodrigo")
 	anim.play("Rodrigo")
 	await get_tree().create_timer(powerUpDuration).timeout
-	print("⏹ Volviendo a animación normal")
+	print("Volviendo a animación normal")
 	anim.play("Fly")
 
 
-# 🛡️ Función de inmunidad
+#Función de inmunidad
 func activar_inmunidad(tiempo):
 	inmune = true
-	print("🛡️ Bird es inmune por ", tiempo, " segundos")
+	print("Bird es inmune por ", tiempo, " segundos")
 	anim.play("Rodrigo")
 
 	await get_tree().create_timer(tiempo).timeout
-
 	inmune = false
-	print("❌ Inmunidad terminada")
+	print("Inmunidad terminada")
 	anim.play("Fly")
+	
+	var en_inmunidad = false
