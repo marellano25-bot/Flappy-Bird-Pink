@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://csyk4xseydsdo" path="res://art/up-rodrigo.png" id="8_c1g30"]
 [ext_resource type="Texture2D" uid="uid://cf6vv7skv6qgc" path="res://art/fresa2.png" id="8_fik3d"]
 [ext_resource type="Texture2D" uid="uid://bpedavapfyeib" path="res://art/fresa3.png" id="9_0qbs0"]
-[ext_resource type="Script" path="res://animated_sprite_2d.gd" id="10_c1g30"]
+[ext_resource type="Script" uid="uid://bfnqemg8j5v16" path="res://animated_sprite_2d.gd" id="10_c1g30"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ushx0"]
 animations = [{

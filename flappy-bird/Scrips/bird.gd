@@ -5,6 +5,7 @@ extends CharacterBody2D
 @export var jump_force := 300.0
 
 @onready var anim = $AnimatedSprite2D
+@onready var collision: CollisionShape2D = $CollisionShape2D 
 
 # Estado del pájaro
 var inmune: bool = false
@@ -26,22 +27,30 @@ func _physics_process(delta: float) -> void:
 
 # 🟢 Función de power-up visual (Rodrigo)
 func use_power_up():
+	collision.disabled = true
 	var powerUpDuration = 5
-	print("▶ Activando animación Rodrigo")
+	#Aciva a Rodrigo>
 	anim.play("Rodrigo")
 	await get_tree().create_timer(powerUpDuration).timeout
-	print("⏹ Volviendo a animación normal")
+	#Revertir efectos>
 	anim.play("Fly")
+	collision.disabled = false
 
 
-# 🛡️ Función de inmunidad
 func activar_inmunidad(tiempo):
 	inmune = true
-	print("🛡️ Bird es inmune por ", tiempo, " segundos")
-	anim.play("Rodrigo")
+
+	var original_mask = collision_mask
+	print("Original mask:", original_mask)
+
+	# Assuming pipes are on layer 2
+	var pipe_layer_bit = 2
+
+	collision_mask &= ~pipe_layer_bit #Essto para desactivar la colisión (aún no sirve)
+	print("New mask:", collision_mask)
 
 	await get_tree().create_timer(tiempo).timeout
 
-	inmune = false
-	print("❌ Inmunidad terminada")
-	anim.play("Fly")
+	# Restore original mask
+	collision_mask = original_mask
+	inmune = false 
