@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://c1wb4g4fnsdbu"]
+[gd_scene load_steps=18 format=3 uid="uid://c1wb4g4fnsdbu"]
 
 [ext_resource type="Script" uid="uid://b64bv7rsc02f1" path="res://Scrips/cosoprincipal.gd" id="1_mmc72"]
 [ext_resource type="Texture2D" uid="uid://cl40yorqjha7y" path="res://art/Background_nightime.png" id="1_tro0c"]
@@ -13,6 +13,9 @@
 [ext_resource type="Texture2D" uid="uid://cf6vv7skv6qgc" path="res://art/fresa2.png" id="8_fik3d"]
 [ext_resource type="Texture2D" uid="uid://bpedavapfyeib" path="res://art/fresa3.png" id="9_0qbs0"]
 [ext_resource type="Script" uid="uid://bfnqemg8j5v16" path="res://animated_sprite_2d.gd" id="10_c1g30"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bus04"]
+size = Vector2(337, 112)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ushx0"]
 animations = [{
@@ -73,8 +76,15 @@ autoscroll = Vector2(-60, 0)
 position = Vector2(168, 456)
 texture = ExtResource("2_htydy")
 
+[node name="StaticBody2D" type="StaticBody2D" parent="ParallaxFloor"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ParallaxFloor/StaticBody2D"]
+position = Vector2(166.5, 457)
+shape = SubResource("RectangleShape2D_bus04")
+
 [node name="Bird" parent="." instance=ExtResource("3_5tu5x")]
 position = Vector2(56, 184)
+collision_mask = 3
 
 [node name="Rodrigo2" type="AnimatedSprite2D" parent="Bird"]
 visible = false

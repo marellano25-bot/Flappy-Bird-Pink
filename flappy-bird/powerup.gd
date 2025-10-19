@@ -4,8 +4,11 @@ extends Area2D
 @onready var collision: CollisionShape2D = $CollisionShape2D
 
 @export var tiempo_reaparicion := 10.0
+@export var velocidad := 150
 @export var tiempo_inmunidad := 5
 var coold = false
+var x = 350
+var y = randf_range(120, 320)
 
 func _ready():
 	sprite.hide()
@@ -18,16 +21,18 @@ func _ready():
 #Colocamos la fresa en una posición aleatoria al inicio
 func posicionar_aleatoriamente():
 	var _viewport_size = get_viewport_rect().size
-	var _margen = 40
-
-	# Fresa aparece entre 80 y 180px en eje X (zona jugable para Bird)
-	var x = randf_range(75, 100)
-
-	# Ajuste del eje Y para que esté en el rango medio de vuelo de Bird
-	var y = randf_range(200, 350)
-
+	var _margen = 4
 	position = Vector2(x, y)
-
+	
+#Para que se mueva como el resto del entorno
+func _process(delta):
+	if sprite.visible:
+		position.x -= velocidad * delta
+		if position.x <= -50: 
+			await get_tree().create_timer(5).timeout
+			position.x = x
+			posicionar_aleatoriamente()
+			
 #Cuando Bird choca con la fresa
 func _on_body_entered(body: Node2D) -> void:
 	
