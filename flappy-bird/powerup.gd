@@ -5,8 +5,12 @@ extends Area2D
 
 @export var tiempo_reaparicion := 10.0
 @export var tiempo_inmunidad := 5
+var coold = false
 
 func _ready():
+	sprite.hide()
+	await get_tree().create_timer(5).timeout
+	sprite.show()
 	randomize()
 	posicionar_aleatoriamente()
 	body_entered.connect(_on_body_entered)
@@ -26,15 +30,22 @@ func posicionar_aleatoriamente():
 
 #Cuando Bird choca con la fresa
 func _on_body_entered(body: Node2D) -> void:
-	if body.name == "Bird":
-		sprite.hide()
-		collision.disabled = true
-		if body.has_method("activar_inmunidad"):
-			body.activar_inmunidad(tiempo_inmunidad)
-		if body.has_method("use_power_up"):
-			body.use_power_up()
+	
+	if coold == false: 
+		if body.name == "Bird":
+			coold = true
+			sprite.hide()
+			collision.disabled = true
+			if body.has_method("activar_inmunidad"):
+				body.activar_inmunidad(tiempo_inmunidad)
+			if body.has_method("use_power_up"):
+				body.use_power_up()
+			posicionar_aleatoriamente()
 			
 		await get_tree().create_timer(tiempo_reaparicion).timeout
-		posicionar_aleatoriamente()
 		sprite.show()
+		await get_tree().process_frame
 		collision.disabled = false
+		coold = false
+	else:
+		print("cooldownlol")

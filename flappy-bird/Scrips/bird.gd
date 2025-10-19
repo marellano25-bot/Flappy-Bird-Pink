@@ -9,7 +9,6 @@ extends CharacterBody2D
 
 # Estado del pájaro
 var inmune: bool = false
-
 func _ready() -> void:
 	print("✅ Script de Bird cargado correctamente")
 
