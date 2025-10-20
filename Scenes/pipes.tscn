@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://c43mnw5lhr5t8"]
+[gd_scene load_steps=5 format=3 uid="uid://c43mnw5lhr5t8"]
 
 [ext_resource type="Script" uid="uid://cejbqwwymph6u" path="res://Scrips/pipes.gd" id="1_7ktcp"]
 [ext_resource type="PackedScene" uid="uid://bk0eih5cshc30" path="res://Scenes/pipe.tscn" id="1_uhra5"]
@@ -8,9 +8,6 @@ size = Vector2(38, 337)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ws3sl"]
 size = Vector2(45, 310)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_l3813"]
-size = Vector2(20, 170)
 
 [node name="Pipes" type="StaticBody2D"]
 position = Vector2(-8, 8)
@@ -37,14 +34,7 @@ shape = SubResource("RectangleShape2D_7ktcp")
 position = Vector2(29, -222)
 shape = SubResource("RectangleShape2D_ws3sl")
 
-[node name="Area2D_addpunto" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_addpunto"]
-position = Vector2(67, 14)
-shape = SubResource("RectangleShape2D_l3813")
-
 [connection signal="body_entered" from="Pipe_down" to="." method="_on_pipe_down_body_entered"]
 [connection signal="body_entered" from="Pipe_top" to="." method="_on_pipe_top_body_entered"]
 [connection signal="body_entered" from="Pipe_top" to="." method="_on_pipe_down_body_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
-[connection signal="body_entered" from="Area2D_addpunto" to="." method="_on_area_2d_addpunto_body_entered"]

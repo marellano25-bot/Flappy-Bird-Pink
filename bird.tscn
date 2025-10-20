@@ -40,17 +40,17 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6ljjq"]
-radius = 20.0
+radius = 31.06445
 
 [node name="Bird" type="CharacterBody2D"]
-z_index = 1
 position = Vector2(144, 88)
+collision_mask = 2
 script = ExtResource("1_cchwj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(8, 8)
 sprite_frames = SubResource("SpriteFrames_axl6x")
-animation = &"Fly"
+animation = &"Rodrigo"
 autoplay = "Fly"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

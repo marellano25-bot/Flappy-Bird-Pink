@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c1wb4g4fnsdbu"]
+[gd_scene load_steps=23 format=3 uid="uid://c1wb4g4fnsdbu"]
 
 [ext_resource type="Script" uid="uid://b64bv7rsc02f1" path="res://Scrips/cosoprincipal.gd" id="1_mmc72"]
 [ext_resource type="Texture2D" uid="uid://cl40yorqjha7y" path="res://art/Background_nightime.png" id="1_tro0c"]
@@ -6,11 +6,38 @@
 [ext_resource type="PackedScene" uid="uid://c43mnw5lhr5t8" path="res://Scenes/pipes.tscn" id="2_ti7m3"]
 [ext_resource type="PackedScene" uid="uid://cyi86uesd468y" path="res://bird.tscn" id="3_5tu5x"]
 [ext_resource type="Script" uid="uid://byqjoalbx6n8o" path="res://powerup.gd" id="6_8sv6g"]
+[ext_resource type="Texture2D" uid="uid://ce28mxalmx2n0" path="res://art/down-rodrigo.png" id="6_o1o2c"]
+[ext_resource type="Texture2D" uid="uid://xxgbcrx3k4x3" path="res://art/mid-rodrigo.png" id="7_8sv6g"]
 [ext_resource type="Texture2D" uid="uid://xrxvhj4hpai8" path="res://art/fresa.png" id="7_c1g30"]
+[ext_resource type="Texture2D" uid="uid://csyk4xseydsdo" path="res://art/up-rodrigo.png" id="8_c1g30"]
 [ext_resource type="Texture2D" uid="uid://cf6vv7skv6qgc" path="res://art/fresa2.png" id="8_fik3d"]
 [ext_resource type="Texture2D" uid="uid://bpedavapfyeib" path="res://art/fresa3.png" id="9_0qbs0"]
+[ext_resource type="AudioStream" uid="uid://dsm3m3vaij7ce" path="res://sounds/wing.wav" id="9_b0jr0"]
 [ext_resource type="Script" uid="uid://bfnqemg8j5v16" path="res://animated_sprite_2d.gd" id="10_c1g30"]
-[ext_resource type="PackedScene" uid="uid://b3bc73h6olrnb" path="res://Scenes/canvas_layer.tscn" id="11_fik3d"]
+[ext_resource type="AudioStream" uid="uid://chm7xqo70x6db" path="res://sounds/swoosh.wav" id="10_odcgy"]
+[ext_resource type="AudioStream" uid="uid://blriyb62j4ceu" path="res://sounds/point.wav" id="11_nls7a"]
+[ext_resource type="AudioStream" uid="uid://b4kfvdagmkhay" path="res://sounds/hit.wav" id="12_2tsqf"]
+[ext_resource type="AudioStream" uid="uid://bp32j014hqi3k" path="res://sounds/die.wav" id="13_ftpjs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bus04"]
+size = Vector2(337, 112)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ushx0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_o1o2c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_8sv6g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_c1g30")
+}],
+"loop": true,
+"name": &"rodrigo",
+"speed": 10.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ushx0"]
 size = Vector2(36.25, 32)
@@ -32,9 +59,6 @@ animations = [{
 "speed": 12.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_c1g30"]
-size = Vector2(284, 103)
-
 [node name="Cosoprincipal" type="Node"]
 script = ExtResource("1_mmc72")
 pipes_scene = ExtResource("2_ti7m3")
@@ -54,38 +78,66 @@ repeat_size = Vector2(336, 0)
 autoscroll = Vector2(-60, 0)
 
 [node name="Base" type="Sprite2D" parent="ParallaxFloor"]
-position = Vector2(168, 454)
+position = Vector2(168, 456)
 texture = ExtResource("2_htydy")
 
+[node name="StaticBody2D" type="StaticBody2D" parent="ParallaxFloor"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ParallaxFloor/StaticBody2D"]
+position = Vector2(166.5, 457)
+shape = SubResource("RectangleShape2D_bus04")
+
 [node name="Bird" parent="." instance=ExtResource("3_5tu5x")]
-position = Vector2(59, 117)
+position = Vector2(56, 184)
+collision_mask = 3
+
+[node name="Rodrigo2" type="AnimatedSprite2D" parent="Bird"]
+visible = false
+position = Vector2(7, 5)
+sprite_frames = SubResource("SpriteFrames_ushx0")
+animation = &"rodrigo"
+autoplay = "rodrigo"
+frame = 2
+frame_progress = 0.36497346
+
+[node name="wing_sound" type="AudioStreamPlayer2D" parent="Bird"]
+stream = ExtResource("9_b0jr0")
+
+[node name="swoosh_sound" type="AudioStreamPlayer2D" parent="Bird"]
+stream = ExtResource("10_odcgy")
+
+[node name="hit_sound" type="AudioStreamPlayer2D" parent="Bird"]
+stream = ExtResource("12_2tsqf")
+
+[node name="die_sound" type="AudioStreamPlayer2D" parent="Bird"]
+stream = ExtResource("13_ftpjs")
 
 [node name="Timerpipe" type="Timer" parent="."]
+autostart = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
-[node name="powerup" type="Node" parent="."]
+[node name="powerup" type="Area2D" parent="."]
 script = ExtResource("6_8sv6g")
 
-[node name="CollisionShape2D_fresita" type="CollisionShape2D" parent="powerup"]
-position = Vector2(247.12494, 199.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="powerup"]
 shape = SubResource("RectangleShape2D_ushx0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="powerup"]
-position = Vector2(245.99997, 200.5)
+position = Vector2(0, -1)
 scale = Vector2(0.8888876, 0.9166667)
 sprite_frames = SubResource("SpriteFrames_bus04")
 animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.8872257
 script = ExtResource("10_c1g30")
 
-[node name="Area2D_Floor" type="Area2D" parent="."]
+[node name="swoosh_sound" type="AudioStreamPlayer2D" parent="powerup"]
+position = Vector2(56, 184)
+stream = ExtResource("10_odcgy")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_Floor"]
-z_index = 3
-position = Vector2(145, 451)
-shape = SubResource("RectangleShape2D_c1g30")
-
-[node name="CanvasLayer" parent="." instance=ExtResource("11_fik3d")]
+[node name="point_sound" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(56, 184)
+stream = ExtResource("11_nls7a")
 
 [connection signal="timeout" from="Timerpipe" to="." method="_on_timerpipe_timeout"]
-[connection signal="body_entered" from="Area2D_Floor" to="." method="_on_area_2d_floor_body_entered"]

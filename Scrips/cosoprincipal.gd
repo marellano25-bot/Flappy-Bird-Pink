@@ -11,9 +11,3 @@ func create_pipe():
 	
 func _on_timerpipe_timeout() -> void:
 	create_pipe()
-	 
-
-func _on_area_2d_floor_body_entered(body: Node2D) -> void:
-	if body is Bird:
-		Global.game_over()
-		$Timerpipe.stop()
