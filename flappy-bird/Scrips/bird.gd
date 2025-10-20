@@ -5,44 +5,71 @@ extends CharacterBody2D
 @export var jump_force := 300.0
 
 @onready var anim = $AnimatedSprite2D
+@onready var collision: CollisionShape2D = $CollisionShape2D 
 
-# Estado del pájaro
+# Configuración de sonido
+@onready var wing_sound = $wing_sound
+@onready var swoosh_sound = $swoosh_sound
+@onready var point_sound = $point_sound
+@onready var die_sound = $die_sound
+@onready var hit_sound = $hit_sound
+
+
 var inmune: bool = false
 
 func _ready() -> void:
 	print("Script de Bird cargado correctamente")
 
 func _physics_process(delta: float) -> void:
-	# Aplicar gravedad
+	velocity.x = 0 # Para que no se mueva de repente
 	velocity.y += gravity * delta
-
+	
 	# Saltar al presionar espacio
 	if Input.is_action_just_pressed("ui_accept"):
 		velocity.y = -jump_force
-
+	
 	# Mover el pájaro
 	move_and_slide()
+	# Declaración de sonidos
+	
+	
+	if Input.is_action_just_pressed("ui_accept"):
+		velocity.y = -jump_force
+		wing_sound.play()  # sonido al saltar
 
 
-#Función de power-up visual (Rodrigo)
+# Función de power-up visual
 func use_power_up():
 	var powerUpDuration = 5
+	
+	# Guardar animación actual
+	var anim_actual = anim.animation
+	
+	# Activar animación del power-up
 	print("Activando animación Rodrigo")
 	anim.play("Rodrigo")
 	await get_tree().create_timer(powerUpDuration).timeout
+	
+	# Volver a la animación original
 	print("Volviendo a animación normal")
-	anim.play("Fly")
+	anim.play(anim_actual)
+	collision.disabled = false
 
-
-#Función de inmunidad
-func activar_inmunidad(tiempo):
+# Función de inmunidad
+func activar_inmunidad(tiempo: float) -> void:
 	inmune = true
 	print("Bird es inmune por ", tiempo, " segundos")
-	anim.play("Rodrigo")
-
+	
+	# Guardar la máscara original de colisión
+	var original_mask = collision_mask
+	var pipe_layer_bit = 2
+	collision_mask &= ~pipe_layer_bit # Desactiva colisión con las tuberías
+	print("New collision mask:", collision_mask)
+	
 	await get_tree().create_timer(tiempo).timeout
+	
+	# Restaurar colisión original
+	collision_mask = original_mask
 	inmune = false
 	print("Inmunidad terminada")
-	anim.play("Fly")
 	
-	var en_inmunidad = false
