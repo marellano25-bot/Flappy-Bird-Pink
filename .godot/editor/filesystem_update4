@@ -8,3 +8,8 @@ res://Scrips/pipes.gd
 res://Scrips/yep.gd
 res://Scenes/pipe.tscn
 res://Scrips/global.gd
+res://animated_sprite_2d.gd
+res://powerup.gd
+res://Scenes/bird.gd
+res://Scrips/canvas_layer.gd
+res://Scrips/cosoprincipal.gd
