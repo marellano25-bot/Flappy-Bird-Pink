@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://b64bv7rsc02f1" path="res://Scrips/cosoprincipal.gd" id="1_mmc72"]
 [ext_resource type="Texture2D" uid="uid://cl40yorqjha7y" path="res://art/Background_nightime.png" id="1_tro0c"]
 [ext_resource type="Texture2D" uid="uid://fcvjykuratgx" path="res://art/base.png" id="2_htydy"]
-[ext_resource type="PackedScene" uid="uid://c43mnw5lhr5t8" path="res://Scenes/pipes.tscn" id="2_ti7m3"]
+[ext_resource type="PackedScene" uid="uid://c43mnw5lhr5t8" path="res://art/pipes.tscn" id="2_ti7m3"]
 [ext_resource type="PackedScene" uid="uid://cyi86uesd468y" path="res://bird.tscn" id="3_5tu5x"]
 [ext_resource type="Script" uid="uid://byqjoalbx6n8o" path="res://powerup.gd" id="6_8sv6g"]
 [ext_resource type="Texture2D" uid="uid://ce28mxalmx2n0" path="res://art/down-rodrigo.png" id="6_o1o2c"]
@@ -94,6 +94,8 @@ animation = &"rodrigo"
 autoplay = "rodrigo"
 frame = 2
 frame_progress = 0.36497346
+
+[node name="jumpin" type="AudioStreamPlayer2D" parent="Bird"]
 
 [node name="Timerpipe" type="Timer" parent="."]
 
