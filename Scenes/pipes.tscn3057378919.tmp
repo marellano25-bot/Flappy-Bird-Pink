@@ -7,7 +7,7 @@
 size = Vector2(38, 337)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ws3sl"]
-size = Vector2(38, 308)
+size = Vector2(45, 310)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l3813"]
 size = Vector2(20, 149)
@@ -34,7 +34,7 @@ position = Vector2(31, 255.5)
 shape = SubResource("RectangleShape2D_7ktcp")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(29, -223)
+position = Vector2(29, -222)
 shape = SubResource("RectangleShape2D_ws3sl")
 
 [node name="Area2D_add_punto" type="Area2D" parent="."]

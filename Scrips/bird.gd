@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Bird
 
 # Configuración de movimiento
 @export var gravity := 1000.0
@@ -14,8 +15,8 @@ extends CharacterBody2D
 @onready var die_sound = $die_sound
 @onready var hit_sound = $hit_sound
 
-
 var inmune: bool = false
+const PIPE_LAYER := 2  # ← pon aquí el número de layer donde están las tuberías
 
 func _ready() -> void:
 	print("Script de Bird cargado correctamente")
@@ -31,7 +32,6 @@ func _physics_process(delta: float) -> void:
 	# Mover el pájaro
 	move_and_slide()
 	# Declaración de sonidos
-	
 	
 	if Input.is_action_just_pressed("ui_accept"):
 		velocity.y = -jump_force
@@ -62,8 +62,10 @@ func activar_inmunidad(tiempo: float) -> void:
 	
 	# Guardar la máscara original de colisión
 	var original_mask = collision_mask
-	var pipe_layer_bit = 2
-	collision_mask &= ~pipe_layer_bit # Desactiva colisión con las tuberías
+	
+	# ⚡ Ignora la capa de TUBERÍAS mientras dura la inmunidad
+	# (usa la API de Godot en lugar de bitwise manual)
+	set_collision_mask_value(PIPE_LAYER, false)
 	print("New collision mask:", collision_mask)
 	
 	await get_tree().create_timer(tiempo).timeout
@@ -72,4 +74,3 @@ func activar_inmunidad(tiempo: float) -> void:
 	collision_mask = original_mask
 	inmune = false
 	print("Inmunidad terminada")
-	

@@ -1,10 +1,11 @@
-[gd_scene load_steps=23 format=3 uid="uid://c1wb4g4fnsdbu"]
+[gd_scene load_steps=24 format=3 uid="uid://c1wb4g4fnsdbu"]
 
 [ext_resource type="Script" uid="uid://b64bv7rsc02f1" path="res://Scrips/cosoprincipal.gd" id="1_mmc72"]
 [ext_resource type="Texture2D" uid="uid://cl40yorqjha7y" path="res://art/Background_nightime.png" id="1_tro0c"]
 [ext_resource type="Texture2D" uid="uid://fcvjykuratgx" path="res://art/base.png" id="2_htydy"]
 [ext_resource type="PackedScene" uid="uid://c43mnw5lhr5t8" path="res://Scenes/pipes.tscn" id="2_ti7m3"]
 [ext_resource type="PackedScene" uid="uid://cyi86uesd468y" path="res://bird.tscn" id="3_5tu5x"]
+[ext_resource type="PackedScene" uid="uid://c5a4871j7bgba" path="res://canvas_layer.tscn" id="3_odcgy"]
 [ext_resource type="Script" uid="uid://byqjoalbx6n8o" path="res://powerup.gd" id="6_8sv6g"]
 [ext_resource type="Texture2D" uid="uid://ce28mxalmx2n0" path="res://art/down-rodrigo.png" id="6_o1o2c"]
 [ext_resource type="Texture2D" uid="uid://xxgbcrx3k4x3" path="res://art/mid-rodrigo.png" id="7_8sv6g"]
@@ -62,6 +63,8 @@ animations = [{
 [node name="Cosoprincipal" type="Node"]
 script = ExtResource("1_mmc72")
 pipes_scene = ExtResource("2_ti7m3")
+
+[node name="CanvasLayer" parent="." instance=ExtResource("3_odcgy")]
 
 [node name="ParallaxBackground" type="Parallax2D" parent="."]
 repeat_size = Vector2(288, 0)

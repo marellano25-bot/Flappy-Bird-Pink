@@ -15,6 +15,10 @@ run/main_scene="res://cosoprincipal.tscn"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://art/icon.svg"
 
+[autoload]
+
+Global="*res://Scrips/global.gd"
+
 [display]
 
 window/size/viewport_width=288

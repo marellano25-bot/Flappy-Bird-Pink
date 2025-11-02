@@ -1,7 +1,7 @@
-CollisionShape2D
-Area2D
 Label
 CanvasLayer
+CollisionShape2D
+Area2D
 Sprite2D
 StaticBody2D
 Node
