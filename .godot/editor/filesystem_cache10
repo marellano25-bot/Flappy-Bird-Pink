@@ -1,5 +1,9 @@
 63f7b34db8d8cdea90c76aacccf841ec
+<<<<<<< HEAD
 ::res://::1762041950
+=======
+::res://::1762042021
+>>>>>>> edc4744 (Ya hay pantalla de inicio y para al perder)
 animated_sprite_2d.gd::GDScript::2765181068807551623::1760936673::0::1::::<>AnimatedSprite2D<><>0<>0<><>::
 bird.gd::GDScript::5210957196146338884::1760490790::0::1::::<>CharacterBody2D<><>0<>0<><>::
 bird.tscn::PackedScene::6475948714573046606::1760936673::0::1::::<><><>0<>0<><>::uid://b22q05wp2itv0::::res://Scrips/bird.gd<>uid://ckiryjs54mvch::::res://art/up-bird.png<>uid://btfcdb5g2ila5::::res://art/mid-bird.png<>uid://b0fxwrmv0pfqo::::res://art/down-bird.png<>uid://csyk4xseydsdo::::res://art/up-rodrigo.png<>uid://xxgbcrx3k4x3::::res://art/mid-rodrigo.png<>uid://ce28mxalmx2n0::::res://art/down-rodrigo.png
