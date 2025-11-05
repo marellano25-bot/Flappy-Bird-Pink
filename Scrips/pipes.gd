@@ -53,6 +53,7 @@ func _on_pipe_down_body_entered(body: Node2D) -> void:
 	Global.game_over()  # puedes pasar tag: Global.game_over("pipe_down")
 
 
+
 # --- ÁREA PARA SUMAR PUNTO ---
 func _on_area_2d_add_punto_body_entered(body: Node2D) -> void:
 	if not (body is Bird):

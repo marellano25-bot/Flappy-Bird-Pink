@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://c5a4871j7bgba"]
+[gd_scene load_steps=4 format=3 uid="uid://c5a4871j7bgba"]
 
 [ext_resource type="Script" uid="uid://c0uxm1kor4fuc" path="res://Scrips/canvas_layer.gd" id="1_v2lfg"]
+[ext_resource type="Texture2D" uid="uid://ctwkcfmx58qia" path="res://art/startbtn.png" id="2_37rai"]
+[ext_resource type="Texture2D" uid="uid://c62nexf3ncw72" path="res://art/puntero.png" id="3_0qrqu"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_v2lfg")
@@ -17,3 +19,13 @@ grow_horizontal = 2
 theme_override_font_sizes/font_size = 50
 text = "0"
 horizontal_alignment = 1
+
+[node name="Startbtn" type="Sprite2D" parent="."]
+position = Vector2(143.99998, 268)
+scale = Vector2(0.17337032, 0.15524575)
+texture = ExtResource("2_37rai")
+
+[node name="Puntero" type="Sprite2D" parent="."]
+position = Vector2(143, 341)
+scale = Vector2(0.042613633, 0.044507578)
+texture = ExtResource("3_0qrqu")

@@ -20,8 +20,8 @@
 [ext_resource type="AudioStream" uid="uid://b4kfvdagmkhay" path="res://sounds/hit.wav" id="12_2tsqf"]
 [ext_resource type="AudioStream" uid="uid://bp32j014hqi3k" path="res://sounds/die.wav" id="13_ftpjs"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_bus04"]
-size = Vector2(337, 112)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_odcgy"]
+size = Vector2(448, 98)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ushx0"]
 animations = [{
@@ -84,14 +84,15 @@ autoscroll = Vector2(-60, 0)
 position = Vector2(168, 456)
 texture = ExtResource("2_htydy")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="ParallaxFloor"]
+[node name="Area2D_floor" type="Area2D" parent="ParallaxFloor/Base"]
+position = Vector2(-168, -456)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ParallaxFloor/StaticBody2D"]
-position = Vector2(166.5, 457)
-shape = SubResource("RectangleShape2D_bus04")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ParallaxFloor/Base/Area2D_floor"]
+position = Vector2(226, 456)
+shape = SubResource("RectangleShape2D_odcgy")
 
 [node name="Bird" parent="." instance=ExtResource("3_5tu5x")]
-position = Vector2(56, 184)
+position = Vector2(134, 132)
 collision_mask = 3
 
 [node name="Rodrigo2" type="AnimatedSprite2D" parent="Bird"]
@@ -116,7 +117,6 @@ stream = ExtResource("12_2tsqf")
 stream = ExtResource("13_ftpjs")
 
 [node name="Timerpipe" type="Timer" parent="."]
-autostart = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
@@ -143,4 +143,5 @@ stream = ExtResource("10_odcgy")
 position = Vector2(56, 184)
 stream = ExtResource("11_nls7a")
 
+[connection signal="body_entered" from="ParallaxFloor/Base/Area2D_floor" to="." method="_on_area_2d_floor_body_entered"]
 [connection signal="timeout" from="Timerpipe" to="." method="_on_timerpipe_timeout"]
