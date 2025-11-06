@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=3 uid="uid://b474plduwwt1e"]
+
+[ext_resource type="Texture2D" uid="uid://bgxcxwdqqgry" path="res://art/exitbtn.png" id="1_k52d1"]
+[ext_resource type="Script" uid="uid://n0738dpyqvps" path="res://Scenes/control.gd" id="1_uib17"]
+[ext_resource type="Texture2D" uid="uid://be0o5gvh87lje" path="res://art/gaovasset.png" id="2_ktc4i"]
+[ext_resource type="Script" uid="uid://bspy5whph5q5w" path="res://Scenes/texture_button.gd" id="2_uib17"]
+
+[node name="Control" type="CanvasLayer"]
+layer = 4
+
+[node name="Control2" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_uib17")
+
+[node name="Reloadbtn" type="TextureButton" parent="Control2"]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 195.0
+offset_right = 235.0
+offset_bottom = 269.0
+texture_normal = ExtResource("1_k52d1")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("2_uib17")
+
+[node name="TextureRect" type="TextureRect" parent="Control2"]
+layout_mode = 0
+offset_left = 29.0
+offset_top = 124.0
+offset_right = 254.0
+offset_bottom = 171.0
+texture = ExtResource("2_ktc4i")
+expand_mode = 1
+
+[node name="quitbtn" type="TextureButton" parent="Control2"]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 284.0
+offset_right = 235.0
+offset_bottom = 358.0
+texture_normal = ExtResource("1_k52d1")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("2_uib17")
+
+[connection signal="pressed" from="Control2/Reloadbtn" to="Control2" method="_on_reloadbtn_pressed"]
+[connection signal="pressed" from="Control2/quitbtn" to="Control2" method="_on_quitbtn_pressed"]

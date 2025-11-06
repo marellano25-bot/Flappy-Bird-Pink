@@ -1,26 +1,16 @@
 extends Node2D
 
 @export var velocidad := 300.0
-@export var reset_x := 320.0
 @export var min_y := 133.0
 @export var max_y := 300.0
-
+var gaovsc = preload("res://Scenes/GameOver.tscn")
 var punto_agregado := false
 
 func _ready() -> void:
 	randomize()
-	position.x = reset_x
 	position.y = randi_range(min_y, max_y)
-
 func _process(delta: float) -> void:
 	position.x -= velocidad * delta
-
-	# Cuando salen de pantalla, reubícalos y permite volver a sumar punto
-	if position.x < -400.0:
-		position.x = reset_x
-		position.y = randi_range(min_y, max_y)
-		punto_agregado = false
-
 
 # --- COLISIÓN CON EL TUBO SUPERIOR ---
 func _on_pipe_top_body_entered(body: Node2D) -> void:
@@ -35,7 +25,7 @@ func _on_pipe_top_body_entered(body: Node2D) -> void:
 
 	if body.has_node("die_sound"):
 		body.get_node("die_sound").play()
-	Global.game_over()  # puedes pasar tag: Global.game_over("pipe_top")
+		_show_game_over()
 
 
 # --- COLISIÓN CON EL TUBO INFERIOR ---
@@ -50,7 +40,24 @@ func _on_pipe_down_body_entered(body: Node2D) -> void:
 
 	if body.has_node("die_sound"):
 		body.get_node("die_sound").play()
-	Global.game_over()  # puedes pasar tag: Global.game_over("pipe_down")
+		_show_game_over()
+		
+
+func _show_game_over() -> void:
+	Global.game_over()
+
+	var gaovinstance = gaovsc.instantiate()
+
+	# get the Control node inside the GameOver scene
+	var control_child = gaovinstance.get_node("Control2")  # change name if needed
+	control_child.process_mode = Node.PROCESS_MODE_ALWAYS
+
+	get_tree().current_scene.add_child(gaovinstance)
+
+	await get_tree().process_frame
+	get_tree().paused = true
+
+		
 
 
 

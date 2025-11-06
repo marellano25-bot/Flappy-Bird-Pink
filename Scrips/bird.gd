@@ -32,6 +32,8 @@ func _physics_process(delta: float) -> void:
 		
 		# Mover el pájaro
 		move_and_slide()
+		if position.y > 600    or position.x < -200     :
+			get_tree().quit() #Aún no funciona, pero va a encargarse de parar el juego si el personaje se sale de pantalla
 		# Declaración de sonidos
 		
 		if Input.is_action_just_pressed("ui_accept"):

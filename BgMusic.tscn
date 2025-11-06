@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cy8nq01rkjju0"]
+
+[ext_resource type="AudioStream" uid="uid://3iirvo43n73y" path="res://flappy-sounds/bambous.mp3" id="1_1h10q"]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_1h10q")
+autoplay = true
