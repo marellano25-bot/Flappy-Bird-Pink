@@ -42,14 +42,14 @@ func _on_pipe_down_body_entered(body: Node2D) -> void:
 		body.get_node("die_sound").play()
 		_show_game_over()
 		
-
+#La función que se encarga de la pantalla del game over
 func _show_game_over() -> void:
 	Global.game_over()
 
 	var gaovinstance = gaovsc.instantiate()
 
-	# get the Control node inside the GameOver scene
-	var control_child = gaovinstance.get_node("Control2")  # change name if needed
+	# Para obtener el nodo
+	var control_child = gaovinstance.get_node("Control2") 
 	control_child.process_mode = Node.PROCESS_MODE_ALWAYS
 
 	get_tree().current_scene.add_child(gaovinstance)
@@ -58,7 +58,6 @@ func _show_game_over() -> void:
 	get_tree().paused = true
 
 		
-
 
 
 # --- ÁREA PARA SUMAR PUNTO ---

@@ -8,8 +8,12 @@ var last_pipe_x := 0.0
 var gameover = preload("res://Scenes/GameOver.tscn")
 
 func _ready() -> void:
+	get_tree().paused = false
 	Global.connect("on_game_start", game_start)
 	$Timerpipe.stop()
+	if not Global.first_run:
+		await get_tree().process_frame
+		Global.game_start()
 	
 func game_start():
 	$Timerpipe.start()
