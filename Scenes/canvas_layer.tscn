@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b3bc73h6olrnb"]
 
 [ext_resource type="Script" uid="uid://c0uxm1kor4fuc" path="res://Scrips/canvas_layer.gd" id="1_5oaki"]
-[ext_resource type="Texture2D" uid="uid://ctwkcfmx58qia" path="res://art/startbtn.png" id="3_u5uhc"]
+[ext_resource type="Texture2D" uid="uid://dwd1mej8plbpt" path="res://flappy-images/newstartbtn.png" id="2_q85f0"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_5oaki")
@@ -23,4 +23,4 @@ text = "0"
 process_mode = 3
 position = Vector2(416, 56.000015)
 scale = Vector2(0.11685159, 0.11389417)
-texture = ExtResource("3_u5uhc")
+texture = ExtResource("2_q85f0")
