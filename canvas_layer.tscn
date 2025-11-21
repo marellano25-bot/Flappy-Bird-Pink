@@ -8,6 +8,7 @@
 script = ExtResource("1_v2lfg")
 
 [node name="LabelScore" type="Label" parent="."]
+visible = false
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -29,3 +30,10 @@ texture = ExtResource("2_37rai")
 position = Vector2(143, 341)
 scale = Vector2(0.042613633, 0.044507578)
 texture = ExtResource("3_0qrqu")
+
+[node name="num_1" type="Sprite2D" parent="."]
+position = Vector2(97, 57)
+scale = Vector2(0.3, 0.3)
+
+[node name="num_2" type="Sprite2D" parent="."]
+position = Vector2(152, 57)
