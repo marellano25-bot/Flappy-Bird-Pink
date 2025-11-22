@@ -11,10 +11,9 @@ func _ready() -> void:
 		var coso = load("res://art/%d.png" % i)
 		numeros.append(coso)
 		#vector2, es decir que son dos valores juntos, como tamaño,escala, posicion, etc
-		$num_1.scale = Vector2(0.10, 0.10)
-		$num_2.scale = Vector2(0.10, 0.10)
+		$num_1.scale = Vector2(0.09, 0.09)
+		$num_2.scale = Vector2(0.09, 0.09)
 	
-	$LabelScore.hide()
 	$num_1.hide()
 	$num_2.hide()
 
@@ -29,9 +28,9 @@ func actualizar_numeros(score: int) -> void:
 		
 	elif texto.length() == 2:
 		$num_1.show()
-		$num_1.position.x = 118
+		$num_1.position.x = 120
 		$num_2.show()
-		$num_2.position.x = 178
+		$num_2.position.x = 176
 		$num_1.texture = numeros[int(texto[0])]
 		$num_2.texture = numeros[int(texto[1])]
 	
@@ -45,7 +44,6 @@ func _process(delta: float) -> void:
 	#$LabelScore.text = str(Global.score)
 	pass
 func change_score():
-	$LabelScore.text = str(Global.score)
 	actualizar_numeros(Global.score)
 	if not Global.actscore:
 		$num_2.show()
@@ -59,12 +57,10 @@ func start_game():
 	$Startbtn.hide()
 	$Puntero.hide()
 	#Para reiniciar todo (o más bien, que no se mire)
-	$LabelScore.hide()
 	$num_2.hide()
 	Global.score = 0
 	Global.actscore = false
 	
-	$LabelScore.show()
 	actualizar_numeros(Global.score)
 	
 	

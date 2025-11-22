@@ -7,20 +7,6 @@
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_v2lfg")
 
-[node name="LabelScore" type="Label" parent="."]
-visible = false
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -19.0
-offset_top = 18.0
-offset_right = 21.0
-offset_bottom = 41.0
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 50
-text = "0"
-horizontal_alignment = 1
-
 [node name="Startbtn" type="Sprite2D" parent="."]
 position = Vector2(143.99998, 268)
 scale = Vector2(0.17337032, 0.15524575)
