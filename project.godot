@@ -18,6 +18,7 @@ config/icon="res://art/icon.svg"
 [autoload]
 
 Global="*res://Scrips/global.gd"
+BgMusic="*res://BgMusic.tscn"
 
 [display]
 

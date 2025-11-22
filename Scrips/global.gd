@@ -5,14 +5,17 @@ signal on_game_start
 
 var score := 0
 var is_start := false
+var actscore := false
 var first_run := true
+var count
 
 func game_start():
 	is_start = true
 	first_run = false
 	emit_signal("on_game_start")
-	emit_signal("on_Increment_score")
 	score = 0
+	#Checking for confirmation
+	print("Global: game_start called -> score set to 0, is_start=", is_start)
 	
 func reset_game_state():
 	is_start = false
