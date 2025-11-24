@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b474plduwwt1e"]
+[gd_scene load_steps=9 format=3 uid="uid://b474plduwwt1e"]
 
 [ext_resource type="Script" uid="uid://n0738dpyqvps" path="res://Scenes/control.gd" id="1_uib17"]
 [ext_resource type="Texture2D" uid="uid://hmly5tgtcji" path="res://flappy-images/restartbtn.png" id="2_5mu6e"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://byuxowikytf2u" path="res://flappy-images/restartbtn_pressed.png" id="3_8710x"]
 [ext_resource type="Texture2D" uid="uid://dpnjygl6hq4tr" path="res://flappy-images/newexitbtn_pressed.png" id="3_bfgkh"]
 [ext_resource type="Texture2D" uid="uid://bmeqtgdibu65t" path="res://flappy-images/newgameover.png" id="5_5mu6e"]
+[ext_resource type="AudioStream" uid="uid://bu7ryw4cxj5o2" path="res://sounds/intro.mp3" id="8_8710x"]
 
 [node name="Control" type="CanvasLayer"]
 layer = 4
@@ -52,6 +53,11 @@ texture_pressed = ExtResource("3_bfgkh")
 ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("2_uib17")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_8710x")
+volume_db = -12.683
+autoplay = true
 
 [connection signal="pressed" from="Control2/Reloadbtn" to="Control2" method="_on_reloadbtn_pressed"]
 [connection signal="pressed" from="Control2/quitbtn" to="Control2" method="_on_quitbtn_pressed"]

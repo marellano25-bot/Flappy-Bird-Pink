@@ -45,6 +45,6 @@ func _on_area_2d_floor_body_entered(body: Node2D) -> void:
 		control_child.process_mode = Node.PROCESS_MODE_ALWAYS
 		get_tree().current_scene.add_child(gameover_instance)
 
-		# Para que el menu cargue adecuadamente, espera un cuadro. Cambiar si es posible
+		# Para que el menu cargue adecuadamente, espera un cuadro
 		await get_tree().process_frame
 		get_tree().paused = true

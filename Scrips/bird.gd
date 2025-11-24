@@ -16,7 +16,7 @@ class_name Bird
 @onready var hit_sound = $hit_sound
 
 var inmune: bool = false
-const PIPE_LAYER := 2  # ← pon aquí el número de layer donde están las tuberías
+const PIPE_LAYER := 2 
 
 func _ready() -> void:
 	print("Script de Bird cargado correctamente")
@@ -29,16 +29,10 @@ func _physics_process(delta: float) -> void:
 		# Saltar al presionar espacio
 		if Input.is_action_just_pressed("ui_accept"):
 			velocity.y = -jump_force
+			wing_sound.play()  # sonido al saltar
 		
 		# Mover el pájaro
 		move_and_slide()
-		if position.y > 600    or position.x < -200     :
-			get_tree().quit() #Aún no funciona, pero va a encargarse de parar el juego si el personaje se sale de pantalla
-		# Declaración de sonidos
-		
-		if Input.is_action_just_pressed("ui_accept"):
-			velocity.y = -jump_force
-			wing_sound.play()  # sonido al saltar
 
 
 	# Función de power-up visual
@@ -49,31 +43,22 @@ func use_power_up():
 		var anim_actual = anim.animation
 		
 		# Activar animación del power-up
-		print("Activando animación Rodrigo")
 		anim.play("Rodrigo")
 		await get_tree().create_timer(powerUpDuration).timeout
 		
 		# Volver a la animación original
-		print("Volviendo a animación normal")
 		anim.play(anim_actual)
 		collision.disabled = false
 
 	# Función de inmunidad
 func activar_inmunidad(tiempo: float) -> void:
 		inmune = true
-		print("Bird es inmune por ", tiempo, " segundos")
 		
 		# Guardar la máscara original de colisión
 		var original_mask = collision_mask
-		
-		# ⚡ Ignora la capa de TUBERÍAS mientras dura la inmunidad
-		# (usa la API de Godot en lugar de bitwise manual)
 		set_collision_mask_value(PIPE_LAYER, false)
-		print("New collision mask:", collision_mask)
-		
 		await get_tree().create_timer(tiempo).timeout
 		
 		# Restaurar colisión original
 		collision_mask = original_mask
 		inmune = false
-		print("Inmunidad terminada")

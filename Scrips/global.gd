@@ -14,9 +14,6 @@ func game_start():
 	first_run = false
 	emit_signal("on_game_start")
 	score = 0
-	#Checking for confirmation
-	print("Global: game_start called -> score set to 0, is_start=", is_start)
-	
 func reset_game_state():
 	is_start = false
 	
@@ -25,7 +22,5 @@ func Increment_score():
 	emit_signal("on_Increment_score")
 	
 func game_over(tag: String = ""):
-	print("GAME OVER ", tag)
 	get_tree().paused = true
-	#$Timerpipe.stop()
 	# acá el juego va a quedar pausado

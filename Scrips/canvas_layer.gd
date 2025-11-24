@@ -23,7 +23,7 @@ func actualizar_numeros(score: int) -> void:
 	if texto.length() == 1:
 		$num_1.hide()
 		$num_2.show()
-		$num_2.position.x = 148 #Agregué esto para que siempre esté centrado, pero falta modificar los assets.
+		$num_2.position.x = 148 #Agregué esto para que siempre esté centrado      .
 		$num_2.texture = numeros[int(texto[0])]
 		
 	elif texto.length() == 2:
@@ -41,7 +41,6 @@ func _input(event: InputEvent) -> void:
 			start_game()
 
 func _process(delta: float) -> void:
-	#$LabelScore.text = str(Global.score)
 	pass
 func change_score():
 	actualizar_numeros(Global.score)
@@ -56,7 +55,7 @@ func _on_game_start() -> void:
 func start_game():
 	$Startbtn.hide()
 	$Puntero.hide()
-	#Para reiniciar todo (o más bien, que no se mire)
+	#Para reiniciar todo
 	$num_2.hide()
 	Global.score = 0
 	Global.actscore = false

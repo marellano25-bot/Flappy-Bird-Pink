@@ -4,7 +4,7 @@ extends Node2D
 @export var min_y := 133.0
 @export var max_y := 300.0
 var gaovsc = preload("res://Scenes/GameOver.tscn")
-var punto_agregado := false
+var punto_agregado := false  
 
 func _ready() -> void:
 	randomize()
@@ -12,7 +12,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	position.x -= velocidad * delta
 
-# --- COLISIÓN CON EL TUBO SUPERIOR ---
+# Colisión
 func _on_pipe_top_body_entered(body: Node2D) -> void:
 	if not (body is Bird):
 		return
@@ -28,7 +28,7 @@ func _on_pipe_top_body_entered(body: Node2D) -> void:
 		_show_game_over()
 
 
-# --- COLISIÓN CON EL TUBO INFERIOR ---
+# Colisión2
 func _on_pipe_down_body_entered(body: Node2D) -> void:
 	if not (body is Bird):
 		return
@@ -60,7 +60,7 @@ func _show_game_over() -> void:
 		
 
 
-# --- ÁREA PARA SUMAR PUNTO ---
+# Collision = points
 func _on_area_2d_add_punto_body_entered(body: Node2D) -> void:
 	if not (body is Bird):
 		return
