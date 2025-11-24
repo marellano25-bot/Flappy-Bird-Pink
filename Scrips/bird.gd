@@ -8,7 +8,7 @@ class_name Bird
 @onready var anim = $AnimatedSprite2D
 @onready var collision: CollisionShape2D = $CollisionShape2D 
 
-# Configuración de sonido
+# Configuración de sonido @onready var point_sound = $point_sound
 @onready var wing_sound = $wing_sound
 @onready var swoosh_sound = $swoosh_sound
 @onready var point_sound = $point_sound

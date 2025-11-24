@@ -1,4 +1,5 @@
 extends Node
+@onready var point_sound = $point_sound
 
 signal on_Increment_score
 signal on_game_start
@@ -20,6 +21,7 @@ func reset_game_state():
 func Increment_score():
 	score += 1
 	emit_signal("on_Increment_score")
+	
 	
 func game_over(tag: String = ""):
 	get_tree().paused = true

@@ -1,4 +1,5 @@
 extends CanvasLayer
+@onready var point_sound: AudioStreamPlayer2D = $point_sound
 
 var numeros := []
 
@@ -43,6 +44,8 @@ func _input(event: InputEvent) -> void:
 func _process(delta: float) -> void:
 	pass
 func change_score():
+	point_sound.play()
+	
 	actualizar_numeros(Global.score)
 	if not Global.actscore:
 		$num_2.show()
