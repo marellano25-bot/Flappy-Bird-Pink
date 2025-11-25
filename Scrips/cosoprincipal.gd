@@ -4,6 +4,7 @@ extends Node
 @export var pipes_scene:PackedScene
 @export var min_pipe_distance := 250.0
 @export var spawn_x_start := 300
+@onready var point_sound = $point_sound
 var last_pipe_x := 0.0
 var gameover = preload("res://Scenes/GameOver.tscn")
 

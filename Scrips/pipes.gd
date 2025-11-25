@@ -15,6 +15,7 @@ func _process(delta: float) -> void:
 # Colisión
 func _on_pipe_top_body_entered(body: Node2D) -> void:
 	if not (body is Bird):
+		$golpexd.play()
 		return
 
 	if body.inmune:
@@ -69,8 +70,6 @@ func _on_area_2d_add_punto_body_entered(body: Node2D) -> void:
 
 	punto_agregado = true
 	Global.Increment_score()
-
 	if body.has_node("point_sound"):
 		body.get_node("point_sound").play()
-
 	print("puntaje actual:", Global.score)

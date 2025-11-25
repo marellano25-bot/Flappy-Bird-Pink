@@ -7,7 +7,7 @@ func _ready() -> void:
 	Global.connect("on_Increment_score", change_score)
 	Global.connect("on_game_start", _on_game_start)
 	Global.count = self
-	#para los números
+	#para los números del contador
 	for i in range(10):
 		var coso = load("res://art/%d.png" % i)
 		numeros.append(coso)
@@ -35,13 +35,13 @@ func actualizar_numeros(score: int) -> void:
 		$num_1.texture = numeros[int(texto[0])]
 		$num_2.texture = numeros[int(texto[1])]
 	
-func _input(event: InputEvent) -> void:
+func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("ui_accept"):
 		if Global.is_start == false:
 			Global.game_start()
 			start_game()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 func change_score():
 	point_sound.play()
@@ -62,6 +62,8 @@ func start_game():
 	$num_2.hide()
 	Global.score = 0
 	Global.actscore = false
+	if $startbtn_is_pressed:
+		$Click.play()
 	
 	actualizar_numeros(Global.score)
 	

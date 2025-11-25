@@ -23,6 +23,6 @@ func Increment_score():
 	emit_signal("on_Increment_score")
 	
 	
-func game_over(tag: String = ""):
+func game_over(_tag: String = ""):
 	get_tree().paused = true
 	# acá el juego va a quedar pausado
