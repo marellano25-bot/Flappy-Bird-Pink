@@ -29,12 +29,12 @@ func Increment_score():
 	emit_signal("on_Increment_score")
 	
 	
-<<<<<<< HEAD
+
+#func game_over(_tag: String =  ""):
+	#print("...")
 func game_over(_tag: String = ""):
-=======
-func game_over(tag: String = ""):
 	#chavo_sound.play()
-	await get_tree().create_timer(4).timeout
->>>>>>> 910ff45 (Sirve el chavo_sonido!!)
+	await get_tree().create_timer(1.3).timeout
+#(Sirve el chavo_sonido!!)
 	get_tree().paused = true
 	# acá el juego va a quedar pausado
