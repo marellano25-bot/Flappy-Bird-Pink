@@ -62,10 +62,8 @@ func _show_game_over() -> void:
 
 	get_tree().current_scene.add_child(gaovinstance)
 
-	await get_tree().create_timer(1.3).timeout
+	await get_tree().create_timer(0.5).timeout
 	get_tree().paused = true
-
-		
 
 
 # Collision = points

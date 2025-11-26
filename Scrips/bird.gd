@@ -31,27 +31,29 @@ func _ready() -> void:
 	
 
 func _physics_process(delta: float) -> void:
-	if Global.is_start:
-		velocity.x = 0
-		velocity.y += gravity * delta
-
-		if Input.is_action_just_pressed("ui_accept"):
-			velocity.y = -jump_force
-		move_and_slide()
-
-		var collision_info = get_last_slide_collision()
-		if collision_info and not inmune:
-			var collider = collision_info.get_collider()
-			if collider.is_in_group("pipes"):
-				print("Bird chocó")
-				if position.y > 600 or position.x < -200:
-					get_tree().quit()
+	#if Global.grav == true:
+		if Global.is_start:
+			velocity.x = 0
+			velocity.y += gravity * delta
+			
+			if Global.jump == true:
 				if Input.is_action_just_pressed("ui_accept"):
 					velocity.y = -jump_force
-					wing_sound.play()
+				move_and_slide()
+
+			var collision_info = get_last_slide_collision()
+			if collision_info and not inmune:
+				var collider = collision_info.get_collider()
+				if collider.is_in_group("pipes"):
+					print("Bird chocó")
+					if position.y > 600 or position.x < -200:
+						get_tree().quit()
+					if Input.is_action_just_pressed("ui_accept"):
+						velocity.y = -jump_force
+						wing_sound.play()
 
 
-# holam, esta es la parte visual
+		# holam, esta es la parte visual
 
 func use_power_up():
 	var powerUpDuration = 5

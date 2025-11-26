@@ -5,12 +5,14 @@ extends Node
 signal on_Increment_score
 signal on_game_start
 
+var grav = true
 var score := 0
 var is_start := false
 var actscore := false
 var first_run := true
 var count
 var yabasta = false
+var jump = true
 
 func game_start():
 	is_start = true
@@ -34,7 +36,9 @@ func Increment_score():
 	#print("...")
 func game_over(_tag: String = ""):
 	#chavo_sound.play()
-	await get_tree().create_timer(1.3).timeout
+	#Global.grav = false
+	Global.jump = false
+	await get_tree().create_timer(0.5).timeout
 #(Sirve el chavo_sonido!!)
 	get_tree().paused = true
 	# acá el juego va a quedar pausado

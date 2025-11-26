@@ -3,14 +3,16 @@ extends Control
 var puede_reiniciar := false
 
 func _ready():
-	await get_tree().create_timer(2.0).timeout
+	await get_tree().create_timer(0.5).timeout
 	puede_reiniciar = true
-	print("Espera 2 seg. para Restart")
+	Global.jump = true 
+	Global.grav = true
+	print("Espera unos seg. para Restart")
 	audio_stream_player.play()
 	
 func _input(_event): 
 	if not puede_reiniciar:
-		return  # 👈 todavía no puede reiniciar
+		return  # todavía no puede reiniciar
 		
 	if Input.is_action_just_pressed("Accept"):
 		print("RESTART")
