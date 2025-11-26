@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://c1wb4g4fnsdbu"]
+[gd_scene load_steps=27 format=3 uid="uid://c1wb4g4fnsdbu"]
 
 [ext_resource type="Script" uid="uid://b64bv7rsc02f1" path="res://Scrips/cosoprincipal.gd" id="1_mmc72"]
 [ext_resource type="Texture2D" uid="uid://cl40yorqjha7y" path="res://art/Background_nightime.png" id="1_tro0c"]
@@ -20,6 +20,7 @@
 [ext_resource type="AudioStream" uid="uid://b4kfvdagmkhay" path="res://sounds/hit.wav" id="12_2tsqf"]
 [ext_resource type="AudioStream" uid="uid://bp32j014hqi3k" path="res://sounds/die.wav" id="13_ftpjs"]
 [ext_resource type="AudioStream" uid="uid://c2afdtx70ym08" path="res://flappy-sounds/chavo_sound.ogg" id="14_nls7a"]
+[ext_resource type="AudioStream" uid="uid://ckqhxgf1onf41" path="res://flappy-sounds/powerup.wav" id="19_2tsqf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_odcgy"]
 size = Vector2(448, 98)
@@ -148,6 +149,10 @@ script = ExtResource("10_c1g30")
 [node name="swoosh_sound" type="AudioStreamPlayer2D" parent="powerup"]
 position = Vector2(56, 184)
 stream = ExtResource("10_odcgy")
+
+[node name="powerup" type="AudioStreamPlayer2D" parent="powerup"]
+stream = ExtResource("19_2tsqf")
+volume_db = 5.0
 
 [node name="point_sound" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(56, 184)

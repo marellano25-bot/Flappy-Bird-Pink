@@ -2,6 +2,7 @@ extends Area2D
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var collision: CollisionShape2D = $CollisionShape2D
+@onready var pu: AudioStreamPlayer2D = $powerup
 
 @export var tiempo_reaparicion := 10.0
 @export var velocidad := 150
@@ -41,6 +42,8 @@ func _on_body_entered(body: Node2D) -> void:
 			coold = true
 			sprite.hide()
 			collision.disabled = true
+			pu.play()
+		
 			if body.has_method("activar_inmunidad"):
 				body.activar_inmunidad(tiempo_inmunidad)
 			if body.has_method("use_power_up"):
