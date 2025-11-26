@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://c1wb4g4fnsdbu"]
+[gd_scene load_steps=26 format=3 uid="uid://c1wb4g4fnsdbu"]
 
 [ext_resource type="Script" uid="uid://b64bv7rsc02f1" path="res://Scrips/cosoprincipal.gd" id="1_mmc72"]
 [ext_resource type="Texture2D" uid="uid://cl40yorqjha7y" path="res://art/Background_nightime.png" id="1_tro0c"]
@@ -23,6 +23,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_odcgy"]
 size = Vector2(448, 98)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nls7a"]
+size = Vector2(387, 54)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ushx0"]
 animations = [{
@@ -92,6 +95,12 @@ position = Vector2(-168, -456)
 position = Vector2(226, 456)
 shape = SubResource("RectangleShape2D_odcgy")
 
+[node name="Area2D_roof" type="Area2D" parent="ParallaxFloor/Base"]
+
+[node name="CollisionShape2D_roof" type="CollisionShape2D" parent="ParallaxFloor/Base/Area2D_roof"]
+position = Vector2(11, -530)
+shape = SubResource("RectangleShape2D_nls7a")
+
 [node name="Bird" parent="." instance=ExtResource("3_5tu5x")]
 position = Vector2(134, 132)
 collision_mask = 3
@@ -148,4 +157,5 @@ stream = ExtResource("11_nls7a")
 stream = ExtResource("14_nls7a")
 
 [connection signal="body_entered" from="ParallaxFloor/Base/Area2D_floor" to="." method="_on_area_2d_floor_body_entered"]
+[connection signal="body_entered" from="ParallaxFloor/Base/Area2D_roof" to="." method="_on_area_2d_roof_body_entered"]
 [connection signal="timeout" from="Timerpipe" to="." method="_on_timerpipe_timeout"]

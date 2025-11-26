@@ -49,3 +49,21 @@ func _on_area_2d_floor_body_entered(body: Node2D) -> void:
 		# Para que el menu cargue adecuadamente, espera un cuadro
 		await get_tree().process_frame
 		get_tree().paused = true
+
+
+func _on_area_2d_roof_body_entered(body: Node2D) -> void:
+	if body is Bird:
+		Global.game_over()
+		$Timerpipe.stop()
+
+		# Llama a gameover
+		var gameover_scene = preload("res://Scenes/GameOver.tscn")
+		var gameover_instance = gameover_scene.instantiate()
+		var control_child = gameover_instance.get_node("Control2") #Obtener el nodo
+		
+		control_child.process_mode = Node.PROCESS_MODE_ALWAYS
+		get_tree().current_scene.add_child(gameover_instance)
+
+		# Para que el menu cargue adecuadamente, espera un cuadro
+		await get_tree().process_frame
+		get_tree().paused = true
