@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://c1wb4g4fnsdbu"]
+[gd_scene load_steps=25 format=3 uid="uid://c1wb4g4fnsdbu"]
 
 [ext_resource type="Script" uid="uid://b64bv7rsc02f1" path="res://Scrips/cosoprincipal.gd" id="1_mmc72"]
 [ext_resource type="Texture2D" uid="uid://cl40yorqjha7y" path="res://art/Background_nightime.png" id="1_tro0c"]
@@ -19,6 +19,7 @@
 [ext_resource type="AudioStream" uid="uid://blriyb62j4ceu" path="res://sounds/point.wav" id="11_nls7a"]
 [ext_resource type="AudioStream" uid="uid://b4kfvdagmkhay" path="res://sounds/hit.wav" id="12_2tsqf"]
 [ext_resource type="AudioStream" uid="uid://bp32j014hqi3k" path="res://sounds/die.wav" id="13_ftpjs"]
+[ext_resource type="AudioStream" uid="uid://c2afdtx70ym08" path="res://flappy-sounds/chavo_sound.ogg" id="14_nls7a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_odcgy"]
 size = Vector2(448, 98)
@@ -142,6 +143,9 @@ stream = ExtResource("10_odcgy")
 [node name="point_sound" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(56, 184)
 stream = ExtResource("11_nls7a")
+
+[node name="chavo_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_nls7a")
 
 [connection signal="body_entered" from="ParallaxFloor/Base/Area2D_floor" to="." method="_on_area_2d_floor_body_entered"]
 [connection signal="timeout" from="Timerpipe" to="." method="_on_timerpipe_timeout"]

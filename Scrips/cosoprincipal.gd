@@ -1,6 +1,5 @@
 extends Node
-
-
+@onready var chavo_sound: AudioStreamPlayer2D = $chavo_sound
 @export var pipes_scene:PackedScene
 @export var min_pipe_distance := 250.0
 @export var spawn_x_start := 300
@@ -9,6 +8,7 @@ var last_pipe_x := 0.0
 var gameover = preload("res://Scenes/GameOver.tscn")
 
 func _ready() -> void:
+	$chavo_sound.stream_paused = false
 	get_tree().paused = false
 	Global.connect("on_game_start", game_start)
 	$Timerpipe.stop()

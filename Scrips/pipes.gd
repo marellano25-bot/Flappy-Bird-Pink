@@ -1,5 +1,4 @@
 extends Node2D
-
 @export var velocidad := 300.0
 @export var min_y := 133.0
 @export var max_y := 300.0
@@ -9,6 +8,7 @@ var punto_agregado := false
 func _ready() -> void:
 	randomize()
 	position.y = randi_range(min_y, max_y)
+	
 func _process(delta: float) -> void:
 	position.x -= velocidad * delta
 
@@ -23,10 +23,12 @@ func _on_pipe_top_body_entered(body: Node2D) -> void:
 		if body.has_node("hit_sound"):
 			body.get_node("hit_sound").play()
 		return
-
-	if body.has_node("die_sound"):
-		body.get_node("die_sound").play()
-		_show_game_over()
+	if body is Bird:
+		if body.has_node("chavo_sound"):
+			body.get_node("chavo_sound").play()
+		print("works on pipe top")
+	
+	_show_game_over()
 
 
 # Colisión2
@@ -39,12 +41,17 @@ func _on_pipe_down_body_entered(body: Node2D) -> void:
 			body.get_node("hit_sound").play()
 		return
 
-	if body.has_node("die_sound"):
-		body.get_node("die_sound").play()
-		_show_game_over()
-		
+	if body is Bird:
+		if body.has_node("chavo_sound"):
+			body.get_node("chavo_sound").play()
+		print("works on pipe down")
+	
+	_show_game_over()
+
 #La función que se encarga de la pantalla del game over
 func _show_game_over() -> void:
+	
+	
 	Global.game_over()
 
 	var gaovinstance = gaovsc.instantiate()
@@ -55,7 +62,7 @@ func _show_game_over() -> void:
 
 	get_tree().current_scene.add_child(gaovinstance)
 
-	await get_tree().process_frame
+	await get_tree().create_timer(4).timeout
 	get_tree().paused = true
 
 		

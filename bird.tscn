@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cyi86uesd468y"]
+[gd_scene load_steps=11 format=3 uid="uid://cyi86uesd468y"]
 
 [ext_resource type="Script" uid="uid://b22q05wp2itv0" path="res://Scrips/bird.gd" id="1_cchwj"]
 [ext_resource type="Texture2D" uid="uid://ckiryjs54mvch" path="res://art/up-bird.png" id="1_j88tq"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://csyk4xseydsdo" path="res://art/up-rodrigo.png" id="5_yr30m"]
 [ext_resource type="Texture2D" uid="uid://xxgbcrx3k4x3" path="res://art/mid-rodrigo.png" id="6_2o5yp"]
 [ext_resource type="Texture2D" uid="uid://ce28mxalmx2n0" path="res://art/down-rodrigo.png" id="7_k3v35"]
+[ext_resource type="AudioStream" uid="uid://cwuudoomrp40v" path="res://flappy-sounds/chavo_sound.wav" id="8_2o5yp"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_axl6x"]
 animations = [{
@@ -56,3 +57,7 @@ autoplay = "Fly"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(8, 8)
 shape = SubResource("CircleShape2D_6ljjq")
+
+[node name="chavo_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_2o5yp")
+volume_db = 15.146

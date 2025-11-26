@@ -2,7 +2,7 @@ extends Control
 @onready var audio_stream_player: AudioStreamPlayer = $"../AudioStreamPlayer"
 
 func _ready():
-	print("Works")
+	print("Works_Control")
 	audio_stream_player.play()
 	
 func _input(_event): 

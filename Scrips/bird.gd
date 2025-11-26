@@ -11,11 +11,24 @@ class_name Bird
 @onready var swoosh_sound = $swoosh_sound
 @onready var point_sound = $point_sound
 
+@onready var die_sound = $die_sound
+@onready var hit_sound = $hit_sound
+# @onready var chavo_sound = $chavo_sound
+@onready var chavo_sound: AudioStreamPlayer2D = $chavo_sound
+#(Sirve el chavo_sonido!!)
+
 var inmune: bool = false
 const PIPE_LAYER := 2 #capa en la que se encuentran las pipes
 
 func _ready() -> void:
+	if has_node("chavo_sound"):
+		var cs = get_node("chavo_sound")
+		cs.playing = false
+		cs.autoplay = false
+		cs.stream_paused = false
+		cs.volume_db = 0.0
 	print("Script de Bird cargado correctamente")
+	
 
 func _physics_process(delta: float) -> void:
 	if Global.is_start:
